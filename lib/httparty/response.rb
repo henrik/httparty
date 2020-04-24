@@ -139,7 +139,7 @@ module HTTParty
     private
 
     def warn_about_nil_deprecation
-      trace_line = caller.reject { |line| line.include?('httparty') }.first
+      trace_line = caller.reject { |line| line.include?('httparty') }.join("; ")
       warning = "[DEPRECATION] HTTParty will no longer override `response#nil?`. " \
         "This functionality will be removed in future versions. " \
         "Please, add explicit check `response.body.nil? || response.body.empty?`. " \
